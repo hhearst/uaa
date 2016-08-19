@@ -25,10 +25,12 @@ buildscript {
     classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.7'
     classpath "gradle.plugin.com.dorongold.plugins:task-tree:1.2.1"
     classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.3'
+    classpath group: 'com.blackducksoftware.integration', name: 'hub-gradle-plugin', version: '2.0.7'
   }
 }
 
 apply plugin: "com.dorongold.task-tree"
+apply plugin: 'com.blackducksoftware.hub'
 
 ext {
   databaseType = {
@@ -315,7 +317,7 @@ task jacocoRootReport(type: org.gradle.testing.jacoco.tasks.JacocoReport) {
   onlyIf = {
     true
   }
-  doFirst {
+ doFirst {
     executionData = files(executionData.findAll {
       it.exists()
     })
@@ -341,7 +343,7 @@ class TimingsListener implements TaskExecutionListener, BuildListener, org.gradl
   private timings = []
   private testTimings = []
   private final testLimit = 5000
-  private Task currentTask
+ private Task currentTask
 
   @Override
   void beforeExecute(Task task) {
@@ -433,3 +435,21 @@ class TimingsListener implements TaskExecutionListener, BuildListener, org.gradl
 }
 
 gradle.addListener new TimingsListener()
+
+createHubOutput {
+    outputDirectory = "/var/lib/jenkins/jobs/uaa/workspace"
+}
+
+deployHubOutput {
+  outputDirectory = "/var/lib/jenkins/jobs/uaa/workspace"
+  hubUrl = "${hubServerURL}"
+    hubUsername = "${hubUser}"
+    hubPassword = "${superSecurePassword}!"
+    hubTimeout = "${hubTimeoutValue}"
+    hubProxyHost = ""
+    hubProxyPort = ""
+    hubNoProxyHosts = ""
+    hubProxyUsername = ""
+    hubProxyPassword = ""
+}
+
