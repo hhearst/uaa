@@ -437,7 +437,7 @@ class TimingsListener implements TaskExecutionListener, BuildListener, org.gradl
 gradle.addListener new TimingsListener()
 
 createHubOutput {
-    outputDirectory = "/var/lib/jenkins/jobs/uaa/workspace"
+    outputDirectory = "/var/lib/jenkins/jobs/cloudfoundry-identity-parent (UAA)/workspace"
 }
 
 deployHubOutput {
