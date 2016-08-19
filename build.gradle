@@ -441,7 +441,7 @@ createHubOutput {
 }
 
 deployHubOutput {
-  outputDirectory = "/var/lib/jenkins/jobs/uaa/workspace"
+  outputDirectory = "/var/lib/jenkins/jobs/cloudfoundry-identity-parent (UAA)/workspace"
   hubUrl = "${hubServerURL}"
     hubUsername = "${hubUser}"
     hubPassword = "${superSecurePassword}!"
