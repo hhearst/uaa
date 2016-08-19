@@ -443,13 +443,13 @@ createHubOutput {
 deployHubOutput {
   outputDirectory = "/var/lib/jenkins/jobs/uaa/workspace"
   hubUrl = "${hubServerURL}"
-    hubUsername = "${hubUser}"
-    hubPassword = "${superSecurePassword}!"
-    hubTimeout = "${hubTimeoutValue}"
-    hubProxyHost = ""
-    hubProxyPort = ""
-    hubNoProxyHosts = ""
-    hubProxyUsername = ""
-    hubProxyPassword = ""
+  hubUsername = "${hubUser}"
+  hubPassword = "${superSecurePassword}!"
+  hubTimeout = "${hubTimeoutValue}"
+  hubProxyHost = ""
+  hubProxyPort = ""
+  hubNoProxyHosts = ""
+  hubProxyUsername = ""
+  hubProxyPassword = ""
 }
 
